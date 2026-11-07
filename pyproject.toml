@@ -1,0 +1,45 @@
+[project]
+name = "lite-star-app"
+version = "0.1.0"
+description = "Litestar service"
+requires-python = ">=3.12"
+dependencies = ["litestar[standard]>=2.25.0"]
+
+[project.scripts]
+lite-star-app = "lite_star_app.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["lite_star_app"]
+package-dir = { "" = "apps/service" }
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["lite_star_app"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["apps/service"]
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=lite_star_app --cov-branch --cov-report=term-missing --cov-report=xml:coverage.xml --cov-report=html:htmlcov"
+
+[dependency-groups]
+dev = [
+    "gitlint>=0.19.1",
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.4",
+]

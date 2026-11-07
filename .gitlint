@@ -1,0 +1,8 @@
+[general]
+ignore = title-trailing-punctuation
+
+[title-match-regex]
+regex = ^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([^()\s]+\))?!?: [A-Z].*\.$
+
+[body-min-length]
+min-length = 1
